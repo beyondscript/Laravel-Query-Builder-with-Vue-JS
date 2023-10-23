@@ -52,7 +52,7 @@ class FirstTable extends Controller
         $firsttable = DB::table('firsttable') -> where('id', $id)->first();
         return $firsttable;
     }
-    public function update(Request $req, $id){
+    public function update(Request $req){
         $validatedData = $req->validate([
             'image' => ['image']
         ],
@@ -63,7 +63,7 @@ class FirstTable extends Controller
         $data = array();
         $image = request()->file('image');
         if($image){
-            $firsttable = DB::table('firsttable') -> where('id', $id)->first();
+            $firsttable = DB::table('firsttable') -> where('id', $req->id)->first();
             $old_image=$firsttable->image;
             if(file_exists($old_image)){
                 unlink($old_image);
@@ -78,7 +78,7 @@ class FirstTable extends Controller
             $data['text'] = $req -> text;
             $data['number'] = $req -> number;
             $data['image'] = $url;
-            DB::table('firsttable') -> where('id', $id)->update($data);
+            DB::table('firsttable') -> where('id', $req->id)->update($data);
             return response()->json([
                 'message' => 'Data successfully updated'
             ],200);
@@ -86,19 +86,19 @@ class FirstTable extends Controller
         else{
             $data['text'] = $req -> text;
             $data['number'] = $req -> number;
-            DB::table('firsttable') -> where('id', $id)->update($data);
+            DB::table('firsttable') -> where('id', $req->id)->update($data);
             return response()->json([
                 'message' => 'Data successfully updated'
             ],200);
         }
     }
-    public function destroy($id){
-        $firsttable = DB::table('firsttable') -> where('id', $id)->first();
+    public function destroy(Request $req){
+        $firsttable = DB::table('firsttable') -> where('id', $req->id)->first();
         $image  = $firsttable->image;
         if(file_exists($image)){
             unlink($image);
         }
-        DB::table('firsttable') -> where('id', $id)->delete();
+        DB::table('firsttable') -> where('id', $req->id)->delete();
         return response()->json([
             'message' => 'Data successfully deleted'
         ],200);

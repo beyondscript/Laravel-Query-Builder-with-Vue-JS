@@ -25,17 +25,17 @@ class SecondTable extends Controller
         $secondtable = DB::table('secondtable') -> join('firsttable', 'secondtable.ft_id', '=', 'firsttable.id') -> where('secondtable.id', $id) -> select('secondtable.*', 'firsttable.text') -> first();
         return $secondtable;
     }
-    public function update(Request $req, $id){
+    public function update(Request $req){
         $data = array();
         $data['stext'] = $req -> stext;
         $data['ft_id'] = $req -> ft_id;
-        DB::table('secondtable') -> where('id', $id)->update($data);
+        DB::table('secondtable') -> where('id', $req->id)->update($data);
         return response()->json([
             'message' => 'Data successfully updated'
         ],200);
     }
-    public function destroy($id){
-        DB::table('secondtable') -> where('id', $id)->delete();
+    public function destroy(Request $req){
+        DB::table('secondtable') -> where('id', $req->id)->delete();
         return response()->json([
             'message' => 'Data successfully deleted'
         ],200);

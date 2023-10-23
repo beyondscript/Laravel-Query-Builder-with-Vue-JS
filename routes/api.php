@@ -25,13 +25,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/store-in-first-table', [FirstTable::class, 'store']);
 Route::get('/show-from-first-table', [FirstTable::class, 'show']);
 Route::get('/edit-from-first-table/{id}', [FirstTable::class, 'edit']);
-Route::patch('/update-from-first-table/{id}', [FirstTable::class, 'update']);
-Route::delete('/destroy-from-first-table/{id}', [FirstTable::class, 'destroy']);
+Route::patch('/update-from-first-table', [FirstTable::class, 'update']);
+Route::delete('/destroy-from-first-table', [FirstTable::class, 'destroy']);
 
 Route::post('/store-in-second-table', [SecondTable::class, 'store']);
 Route::get('/show-from-second-table', [SecondTable::class, 'show']);
 Route::get('/edit-from-second-table/{id}', [SecondTable::class, 'edit']);
-Route::patch('/update-from-second-table/{id}', [SecondTable::class, 'update']);
-Route::delete('/destroy-from-second-table/{id}', [SecondTable::class, 'destroy']);
+Route::patch('/update-from-second-table', [SecondTable::class, 'update']);
+Route::delete('/destroy-from-second-table', [SecondTable::class, 'destroy']);
 
 Route::get('/refresh-csrf-token', [CsrfCookieController::class, 'show']);
