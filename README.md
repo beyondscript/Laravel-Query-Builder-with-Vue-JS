@@ -4,7 +4,7 @@
 	Laravel Query Builder with Vue JS
 </p>
 
-## About Laravel Query Builder with Vue JS
+## About Laravel Query Builder with Vue JS r
 
 Laravel Query Builder with Vue JS is a web application which was designed by using HTML, CSS, JavaScript and Vue JS and developed by using PHP and Laravel framework.
 
