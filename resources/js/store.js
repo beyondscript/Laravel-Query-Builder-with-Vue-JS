@@ -9,9 +9,7 @@ const store = createStore({
 		datas: [],
 		data: {},
 		firstTables: [],
-		editName: null,
-		serverError: false,
-		appDebugData: {}
+		editName: null
 	},
 	mutations:{
 		updateImageError(state, payload){
@@ -31,12 +29,6 @@ const store = createStore({
 		},
 		updateEditName(state, payload){
 			state.editName = payload
-		},
-		updateServerError(state, payload){
-			state.serverError = payload
-		},
-		updateAppDebugData(state, payload){
-			state.appDebugData = payload
 		}
 	},
 	actions:{
@@ -75,18 +67,6 @@ const store = createStore({
 		},
 		removeEditName(context){
 			context.commit('updateEditName', null)
-		},
-		setServerError(context){
-			context.commit('updateServerError', true)
-		},
-		removeServerError(context){
-			context.commit('updateServerError', false)
-		},
-		setAppDebugData(context, payload){
-			context.commit('updateAppDebugData', payload)
-		},
-		removeAppDebugData(context){
-			context.commit('updateAppDebugData', {})
 		}
 	},
 	getters:{
@@ -113,12 +93,6 @@ const store = createStore({
 		},
 		getEditName: function(state){
 			return state.editName
-		},
-		getServerError: function(state){
-			return state.serverError
-		},
-		getAppDebugData: function(state){
-			return state.appDebugData
 		}
 	}
 })
