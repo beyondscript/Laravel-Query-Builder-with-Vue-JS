@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Laravel Query Builder with Vue JS') ?: 'Laravel Query Builder with Vue JS',
 
     /*
     |--------------------------------------------------------------------------
