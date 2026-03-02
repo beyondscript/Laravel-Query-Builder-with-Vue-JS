@@ -23,6 +23,9 @@ class FirstTable extends Controller
             $name = hexdec(uniqid());
             $fullname = $name.'.webp';
             $path = 'images/firsttable/';
+            if(!file_exists($path)){
+                mkdir($path, 0777, true);
+            }
             $url = $path.$fullname;
             $resize_image=Image::make($image->getRealPath());
             $resize_image->resize(300,300);
@@ -68,6 +71,9 @@ class FirstTable extends Controller
             $name = hexdec(uniqid());
             $fullname = $name.'.webp';
             $path = 'images/firsttable/';
+            if(!file_exists($path)){
+                mkdir($path, 0777, true);
+            }
             $url = $path.$fullname;
             $resize_image=Image::make($image->getRealPath());
             $resize_image->resize(300,300);
